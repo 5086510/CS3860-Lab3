@@ -154,13 +154,7 @@ Object subclass: Board [
     "Display the board"
     display [
 
-        Transcript show: '\033[2J\033[H'.  "ANSI escape sequence to clear screen"
         Transcript show: '>>> Board Display Function Reached'; cr; flush.
-
-        (self grid isNil) ifTrue: [
-            Transcript show: '[ERROR] Grid is nil!'; cr; flush.
-            ^ self.
-        ].
 
         1 to: rows do: [ :r |
             1 to: cols do: [ :c |

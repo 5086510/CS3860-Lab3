@@ -9,7 +9,7 @@ Transcript show: 'Enter the configuration file name: '; flush.
 fileName := (FileStream stdin nextLine) asString.
 
 "Initialize board and load configuration"
-board := Board new: 30 with: 30.  "Default size, will be updated from file"
+board := Board new: 30 with: 30.
 board readConfigFile: fileName.
 
 board display.
@@ -24,4 +24,3 @@ generations := board getGenerations.
 ].
 
 Transcript show: 'Simulation complete!'; cr.
-

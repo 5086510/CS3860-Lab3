@@ -158,4 +158,5 @@ Object subclass: Board [
 
         (Delay forMilliseconds: 500) wait. "Pause for 500 milliseconds"
     ]
-]
+]	
+

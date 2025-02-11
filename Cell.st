@@ -24,7 +24,6 @@ Object subclass: Cell [
         state := false.
     ]
 
-    "Fix: Ensure Cell displays correct character"
     display [
         ^ state ifTrue: [ '*' ] ifFalse: [ ' ' ].
     ]

@@ -27,8 +27,6 @@ Object subclass: Board [
         cols := c asInteger.
         generations := 0.  
 
-        Transcript show: 'Initializing board with '; show: rows printString; show: ' rows and '; show: cols printString; show: ' columns.'; cr; flush.
-
         grid := Array new: rows.
         1 to: rows do: [ :i |
             grid at: i put: (Array new: cols).
@@ -37,7 +35,6 @@ Object subclass: Board [
             ].
         ].
 
-        Transcript show: '✅ Board initialized successfully.'; cr; flush.
     ]
 
     "Read configuration file and set board state"
@@ -56,7 +53,6 @@ Object subclass: Board [
 
         "Initialize the board"
         self setGenerations: gens.
-        Transcript show: '[DEBUG] Generations set to: '; show: self getGenerations printString; cr; flush.
 
         "Read board configuration from file"
         rowIndex := 1.
@@ -65,7 +61,6 @@ Object subclass: Board [
 
             1 to: (line size min: columns) do: [ :colIndex |
                 ((line at: colIndex) = $*) ifTrue: [
-                    Transcript show: 'Setting cell alive at ('; show: rowIndex printString; show: ', '; show: colIndex printString; show: ')'; cr; flush.
                     self setCellAlive: rowIndex column: colIndex.
                 ].
             ].
@@ -88,7 +83,6 @@ Object subclass: Board [
     "Set a cell alive at the given row and column"
     setCellAlive: row column: col [
         ((grid at: row) at: col) makeAlive.
-        Transcript show: '✅ setCellAlive: Cell at ('; show: row printString; show: ', '; show: col printString; show: ') is now alive.'; cr; flush.
     ]
 
     "Set a cell dead at the given row and column"
@@ -152,9 +146,8 @@ Object subclass: Board [
     ]
 
     "Display the board"
-    display [
-
-        Transcript show: '>>> Board Display Function Reached'; cr; flush.
+    display  [
+        ((Character esc) asString,'[2J') displayNl.
 
         1 to: rows do: [ :r |
             1 to: cols do: [ :c |
